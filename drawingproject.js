@@ -2,14 +2,13 @@
 var canvasDiv = document.getElementById("drawingArea");
 var canvas = canvasDiv.getContext('2d');
 
-/*Rectangles (x coordinate, y coordinate, length, and width.)*/
-  //Tree Trunks
+  //The Tree Trunks
 canvas.fillStyle = "brown";
 canvas.fillRect(80, 250, 60, 1000);
 canvas.fillRect(800, 375, 60, 200);
 
 
-/*Triangles*/
+
   // The Snow Slope
 canvas.fillStyle = "white";
 canvas.beginPath();
@@ -19,7 +18,8 @@ canvas.lineTo(0,400);
 canvas.fill();
 canvas.fillRect(0, 621, 1300, 25);
 
-  //The Trees
+  //The Trees' Leaves
+      //1st Tree
 canvas.fillStyle = "green";
 canvas.beginPath();
 canvas.moveTo(110,200);
@@ -36,8 +36,7 @@ canvas.moveTo(110,100);
 canvas.lineTo(210,200);
 canvas.lineTo(15,200);
 canvas.fill();
-
-
+    //2nd Tree
 canvas.beginPath();
 canvas.moveTo(830,325);
 canvas.lineTo(930,425);
@@ -54,19 +53,15 @@ canvas.lineTo(930,325);
 canvas.lineTo(735,325);
 canvas.fill();
 
-canvas.fillStyle = "white";
-canvas.fillRect(0, 621, 1300, 25);
-
-var snowflakes = [];
 
 function randomNumberGenerator(min,max)
 {
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-/*Circle  arc(x, y, radius, startAngle, endAngle)*/
-
-  //Makes snowflakes and grabs the y value
+  //This array is for holding the positions of the snowflakes
+    var snowflakes = [];
+  //This loop makes snowflakes and pushes the x and y values into the snowflake array
 for(var i=0; i<70; i++){
   var randomX = randomNumberGenerator(0,1300);
   var randomY = randomNumberGenerator(0,623);
@@ -120,7 +115,7 @@ canvas.strokeStyle = "black";
 canvas.stroke();
 
 
-/*Redraws the entire canvas and makes it so the smowflakes "fall" */
+/*When the button is cicked the entire canvas is erased then redrawn.*/
 var redrawn = 0;
 function redraw(){
   canvas.clearRect(0,0,1300, 623);
@@ -172,7 +167,7 @@ function redraw(){
   canvas.lineTo(735,325);
   canvas.fill();
 
-
+//this variable keeps track of  how many times the button has been pressed it is used to make the snowboarder move
   redrawn += 1;
   console.log(redrawn);
 
@@ -212,7 +207,9 @@ function redraw(){
   canvas.lineWidth = 4;
   canvas.strokeStyle = "black";
   canvas.stroke();
-/*Makes Snowflakes "fall" */
+
+
+/*This for loop redraws the snowflakes and adds to thier y value making the snowflakes "fall" */
   for(var i=0; i<snowflakes.length; i++){
     var redrawSnowflake = snowflakes[i];
     canvas.fillStyle = "white";
